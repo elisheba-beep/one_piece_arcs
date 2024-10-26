@@ -26,7 +26,7 @@ module Api
     private
 
     def episode_params
-      params.require(:episode).permit(:name, :number, :video_url, :thumbnail)
+      params.require(:episode).permit(:name, :episode_number, :video_url, :thumbnail)
     end
   end
 end

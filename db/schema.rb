@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_22_091547) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_26_132303) do
   create_table "arcs", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -21,10 +21,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_091547) do
 
   create_table "episodes", force: :cascade do |t|
     t.string "name"
-    t.integer "number"
+    t.integer "episode_number"
     t.string "video_url"
     t.string "thumbnail"
-    t.bigint "arc_id"
+    t.integer "arc_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["arc_id"], name: "index_episodes_on_arc_id"
