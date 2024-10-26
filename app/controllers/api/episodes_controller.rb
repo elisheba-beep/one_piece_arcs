@@ -23,19 +23,23 @@ module Api
       end
     end
 
-    private
 
-    def episode_params
-      params.require(:episode).permit(:name, :episode_number, :video_url, :thumbnail)
-    end
 
-    def by_episode_number
-      episode = Episode.find_by(episode_number: params[:episode_number])
+    def show_by_number
+      arc = Arc.find(params[:arc_id])
+      episode = arc.episodes.find_by(episode_number: params[:episode_number])
+
       if episode
         render json: episode, status: :ok
       else
         render json: { error: "Episode not found" }, status: :not_found
       end
+    end
+
+    private
+
+    def episode_params
+      params.require(:episode).permit(:name, :episode_number, :video_url, :thumbnail)
     end
   end
 end
